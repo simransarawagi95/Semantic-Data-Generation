@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://example.org/Dairy">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Dairy</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/FoodGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Discretionaryfats">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Discretionary fats</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/FoodGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Senior">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Senior</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/Age"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/Person"/>
+    <rdfs:range rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">65</rdfs:range>
+    <rdfs:range rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</rdfs:range>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Potatoes">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Potatoes</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/Vegetables"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Tomatoes">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Tomatoes</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/Vegetables"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Adult">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Adult</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/Age"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/Person"/>
+    <rdfs:range rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</rdfs:range>
+    <rdfs:range rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">64</rdfs:range>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/AddedSugar">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Added sugar</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/FoodGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Child">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Child</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/Age"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/Person"/>
+    <rdfs:range rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</rdfs:range>
+    <rdfs:range rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19</rdfs:range>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Fruit">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Fruit</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/FoodGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Vegetables">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Vegetables</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/FoodGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Restaurant">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Restaurant</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/NotAtHome"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/NotAtHome">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Not At Home</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/AtHome">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">At Home</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Refined">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Grains:Refined</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/Grains"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/DarkGreen">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Dark Green</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/Vegetables"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/School">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">School</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Other">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Other</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/NotAtHome"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Age">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:label xml:lang="en">Age</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Protein">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Protein Foods</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/FoodGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Person">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Person</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Discretionaryoils">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Discretionary oils </rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/FoodGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Grains">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Grains</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/FoodGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/RedOrange">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Red &amp; Orange without Tomatoes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/FoodGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Food Group</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Whole">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Grains:Whole</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://example.org/Grains"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Fastfood">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:label xml:lang="en">Fast food</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/FastFood">
+    <rdfs:subClassOf rdf:resource="http://example.org/NotAtHome"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/RedOranfe">
+    <rdfs:subClassOf rdf:resource="http://example.org/Vegetables"/>
+  </rdf:Description>
+</rdf:RDF>
