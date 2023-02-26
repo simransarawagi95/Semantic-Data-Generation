@@ -14,13 +14,14 @@ header_names = [element.strip() for element in header_names]
 # Create an RDF graph
 g = Graph()
 
-#Define GeoId Class
+#Define RowId Class
 RowId = URIRef("http://example.org/RowId")
 g.add((RowId, RDF.type, OWL.Class))
 g.add((NS.PolicyArea,RDF.type,OWL.Class))
 g.add((NS.Dataset,RDF.type,OWL.Class))
 g.add((NS.Tract,RDF.type,OWL.Class))
 for row in header_names:
+    row=row.replace(' ','')
     if(row=="PolicyArea"):
         g.add((NS.PolicyName,RDF.type,OWL.DatatypeProperty))
     elif(row=="Dataset"):
@@ -47,21 +48,21 @@ g.add((NS.hasTract, RDFS.range, NS.Tract))
 
 #Defining Properties for DataTypeProperty
 g.add((NS.Date, RDFS.range, XSD.date))
-g.add((NS.Year,RDFS.range,XSD.year))
-g.add((NS.Year,RDFS.subClassOf,NS.Date))
+#g.add((NS.Year,RDFS.range,XSD.year))
+g.add((NS.Year,RDFS.subPropertyOf,NS.Date))
 
 # Iterate over the rows in the DataFrame and create RDF triples for each person
 for i, row in df.iterrows():
-    policy_uri=URIRef(f"{NS}row{row['Policy Area']}")
+    policy_uri=URIRef(f"{NS}Policy{row['Policy Area']}")
     g.add((policy_uri, RDF.type, NS.PolicyArea))
     g.add((policy_uri, NS.PolicyName, Literal(row['Policy Area'])))
 for i, row in df.iterrows():
     set_name=row['Dataset'].replace(" ","")
-    set_uri=URIRef(f"{NS}row{set_name}")
+    set_uri=URIRef(f"{NS}data{set_name}")
     g.add((set_uri, RDF.type, NS.Dataset))
     g.add((set_uri, NS.SetName, Literal(row['Dataset'])))
 for i, row in df.iterrows():
-    tract_uri=URIRef(f"{NS}row{row['Tract Number']}")
+    tract_uri=URIRef(f"{NS}tract{row['Tract Number']}")
     g.add((tract_uri, RDF.type, NS.Tract))
     g.add((tract_uri, NS.TractName, Literal(row['Tract'])))
     g.add((tract_uri, NS.TractNo, Literal(row['Tract Number'])))
@@ -71,7 +72,8 @@ for i, row in df.iterrows():
         # g.add((row_uri, NS.PolicyArea, Literal(row['Policy Area'])))
         # g.add((row_uri, NS.Dataset, Literal(row['Dataset'])))
         g.add((row_uri, NS.Variable, Literal(row['Variable'])))
-        g.add((row_uri, NS.Year, Literal(row['Year'], datatype=XSD.year)))
+        #g.add((row_uri, NS.Year, Literal(row['Year'], datatype=XSD.year)))
+        g.add((row_uri, NS.Year, Literal(row['Year'])))
         g.add((row_uri, NS.Count, Literal(row['Count'])))
         #g.add((row_uri, NS.Tract, Literal(row['Tract'])))
         g.add((row_uri, NS.TractNumber, Literal(row['Tract Number'])))
@@ -83,3 +85,5 @@ for i, row in df.iterrows():
 
 # Serialize the RDF graph to a file in XML format
 g.serialize(destination='AirQuality.rdf', format='xml')
+
+
