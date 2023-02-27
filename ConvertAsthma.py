@@ -50,34 +50,29 @@ g.add((NS.Date, RDFS.range, XSD.date))
 #g.add((NS.Year,RDFS.range,XSD.year))
 g.add((NS.Year,RDFS.subPropertyOf,NS.Date))
 
-# Iterate over the rows in the DataFrame and create RDF triples for each person
+# Iterate over the rows in the DataFrame and create RDF triples for each Row
 for i, row in df.iterrows():
     policy_uri=URIRef(f"{NS}Policy{row['Policy Area']}")
     g.add((policy_uri, RDF.type, NS.PolicyArea))
     g.add((policy_uri, NS.PolicyName, Literal(row['Policy Area'])))
-for i, row in df.iterrows():
     set_name=row['Dataset'].replace(" ","")
     set_uri=URIRef(f"{NS}data{set_name}")
     g.add((set_uri, RDF.type, NS.Dataset))
     g.add((set_uri, NS.SetName, Literal(row['Dataset'])))
-for i, row in df.iterrows():
     tract_uri=URIRef(f"{NS}tract{row['Tract Number']}")
     g.add((tract_uri, RDF.type, NS.Tract))
     g.add((tract_uri, NS.TractName, Literal(row['Tract'])))
     g.add((tract_uri, NS.TractNo, Literal(row['Tract Number'])))
-
-# Iterate over the rows in the DataFrame and create RDF triples for each person
-for i, row in df.iterrows():
-     row_uri = URIRef(f"{NS}row{row['Row ID']}")
-     g.add((row_uri, RDF.type, NS.RowId))
-     g.add((row_uri, NS.Variable, Literal(row['Variable'])))
-     g.add((row_uri, NS.Year, Literal(row['Year'])))
-     g.add((row_uri, NS.Count, Literal(row['Count'])))
-     g.add((row_uri, NS.TractNumber, Literal(row['Tract Number'])))
-     g.add((row_uri, NS.Neighborhood, Literal(row['Neighborhood'])))
-     g.add((row_uri, NS.GEOID, Literal(row['GEOID'])))
-     g.add((row_uri, NS.Location, Literal(row['Location'])))
-     g.add((row_uri, NS.Date, Literal(row['Date'])))
+    row_uri = URIRef(f"{NS}row{row['Row ID']}")
+    g.add((row_uri, RDF.type, NS.RowId))
+    g.add((row_uri, NS.Variable, Literal(row['Variable'])))
+    g.add((row_uri, NS.Year, Literal(row['Year'])))
+    g.add((row_uri, NS.Count, Literal(row['Count'])))
+    g.add((row_uri, NS.TractNumber, Literal(row['Tract Number'])))
+    g.add((row_uri, NS.Neighborhood, Literal(row['Neighborhood'])))
+    g.add((row_uri, NS.GEOID, Literal(row['GEOID'])))
+    g.add((row_uri, NS.Location, Literal(row['Location'])))
+    g.add((row_uri, NS.Date, Literal(row['Date'])))
 
 
 # Serialize the RDF graph to a file in XML format
