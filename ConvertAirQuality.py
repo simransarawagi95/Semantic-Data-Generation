@@ -7,7 +7,7 @@ from datetime import datetime
 NS = Namespace("http://example.org/")
 
 # Read the CSV file into a pandas DataFrame
-df = pd.read_csv("./Quality1.csv")
+df = pd.read_csv("./AirQuality.csv")
 header_names = df.columns.tolist()
 header_names = [element.strip() for element in header_names]
 
@@ -84,6 +84,6 @@ for i, row in df.iterrows():
 
 
 # Serialize the RDF graph to a file in XML format
-g.serialize(destination='Check.rdf', format='xml')
+g.serialize(destination='AirQuality.rdf', format='xml')
 
 
