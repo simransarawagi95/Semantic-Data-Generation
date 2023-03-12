@@ -2,6 +2,7 @@ import pandas as pd
 from rdflib import Graph, Literal, Namespace, RDF, RDFS, URIRef, OWL
 from rdflib.namespace import XSD
 from datetime import datetime
+import math
 
 # Define namespaces for the ontology
 NS = Namespace("http://example.org/")
@@ -115,18 +116,18 @@ g.add((NS.Hazardous,RDF.type,OWL.Class))
 g.add((NS.Hazardous,RDFS.subClassOf,NS.AQCategory))
 
 #Assigning Minimum and Maximum Values to AQ Categories
-g.add((NS.Good,NS.hasminValue,Literal('0')))
-g.add((NS.Good,NS.hasmaxValue,Literal('15')))
-g.add((NS.Moderate,NS.hasminValue,Literal('15')))
-g.add((NS.Moderate,NS.hasmaxValue,Literal('40')))
-g.add((NS.UnhealthyforSensitiveGroup,NS.hasminValue,Literal('40')))
-g.add((NS.UnhealthyforSensitiveGroup,NS.hasmaxValue,Literal('65')))
-g.add((NS.Unhealthy,NS.hasminValue,Literal('65')))
-g.add((NS.Unhealthy,NS.hasmaxValue,Literal('150')))
-g.add((NS.VeryUnhealthy,NS.hasminValue,Literal('150')))
-g.add((NS.VeryUnhealthy,NS.hasmaxValue,Literal('250')))
-g.add((NS.Hazardous,NS.hasminValue,Literal('250')))
-g.add((NS.Hazardous,NS.hasmaxValue,Literal('500')))
+g.add((NS.Good,NS.hasminValue,Literal(0)))
+g.add((NS.Good,NS.hasmaxValue,Literal(15)))
+g.add((NS.Moderate,NS.hasminValue,Literal(15)))
+g.add((NS.Moderate,NS.hasmaxValue,Literal(40)))
+g.add((NS.UnhealthyforSensitiveGroup,NS.hasminValue,Literal(40)))
+g.add((NS.UnhealthyforSensitiveGroup,NS.hasmaxValue,Literal(65)))
+g.add((NS.Unhealthy,NS.hasminValue,Literal(65)))
+g.add((NS.Unhealthy,NS.hasmaxValue,Literal(150)))
+g.add((NS.VeryUnhealthy,NS.hasminValue,Literal(150)))
+g.add((NS.VeryUnhealthy,NS.hasmaxValue,Literal(250)))
+g.add((NS.Hazardous,NS.hasminValue,Literal(250)))
+g.add((NS.Hazardous,NS.hasmaxValue,Literal(500)))
 
 
 
@@ -186,8 +187,10 @@ for i, row in df.iterrows():
         g.add((observation_uri, RDF.type, NS.HealthOutcome))
         g.add((observation_uri, RDFS.label, Literal(f"ER Visit Count with AQI value({row['Count_x']}) is {row['Count_y']} on {row['Date']} in {row['Tract_x']}")))
         g.add((observation_uri, NS.hasDate, Literal(row['Date'], datatype=XSD.dateTime)))
-        g.add((observation_uri, NS.hasAQI, Literal(row['Count_x'],datatype=XSD.float)))
-        g.add((observation_uri, NS.hasERVisit, Literal(row['Count_y'],datatype=XSD.float)))
+        # if ((math.isnan(row['Count_x']))):
+        #         row['Count_x']=0
+        g.add((observation_uri, NS.hasAQI, Literal(0 if math.isnan(row['Count_x']) else row['Count_x'],datatype=XSD.float)))
+        g.add((observation_uri, NS.hasERVisit, Literal(0 if math.isnan(row['Count_y']) else row['Count_y'],datatype=XSD.float)))
         g.add((observation_uri, NS.ofTract, URIRef(f"{NS}tract{row['Tract Number']}")))
 
 # Serialize the RDF graph to a file in XML format
